@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {LoginProvider} from "../../providers/login-provider";
 import {Credential} from "../../model/credential";
@@ -14,18 +14,12 @@ export class Registrarse {
 
     constructor(public navCtrl: NavController, public loginProvider: LoginProvider) {
         this.credential = new Credential;
-        console.log(this.credential);
     }
 
-    ionViewDidLoad() {
-        console.log('Hello Registrarse Page');
-    }
+    ionViewDidLoad() {}
 
-    toRegistro(){
-    if(this.credential.email != '' && this.credential.password != '') {
-        // console.log(this.credential);
-        this.loginProvider.registrarUsuario(this.credential)
-    }
+    toRegistro() {
+      this.loginProvider.registrarUsuario(this.credential);
     }
 
     toggleType(){
