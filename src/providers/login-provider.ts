@@ -47,11 +47,24 @@ export class LoginProvider {
         .catch(error => this.callbackErrorLogin(error));
     }
 
+    loginWithFacebook(){
+      let provider = new firebase.auth.FacebookAuthProvider();
+      return firebase.auth().signInWithPopup(provider)
+        .then(resultado => this.callbackSuccessLogin(resultado))
+        .catch(error => this.callbackErrorLogin(error));
+    }
+
   	registrarUsuario(credential: Credential){
     	firebase.auth().createUserWithEmailAndPassword(credential.email, credential.password)
       		.then(resultado => console.log(resultado))
       		.catch(error => console.log(error));
   	}
+
+  	logout(){
+      firebase.auth().signOut()
+        .then(() => this.logoutEventEmitter.emit(true))
+        .catch(error => this.callbackErrorLogin(error))
+    }
 
     private callbackSuccessLogin(response) {
       this.loginSuccessEventEmitter.emit(response.user);

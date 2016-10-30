@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import {Registrarse} from "../registrarse/registrarse";
 import {LoginProvider} from "../../providers/login-provider";
 import {Credential} from "../../model/credential";
+import {HomePage} from '../home/home';
+
 
 @Component({
   selector: 'page-login',
@@ -18,7 +20,7 @@ export class Login {
 
   ionViewDidLoad() {
     this.loginProvider.loginSuccessEventEmitter.subscribe(
-      user => console.log(user)
+      user => this.navCtrl.setRoot(HomePage)
     );
 
     this.loginProvider.loginErrorEventEmitter.subscribe(
@@ -32,6 +34,14 @@ export class Login {
 
   loginWithGoogle(){
     this.loginProvider.loginWithGoogle();
+  }
+
+  loginWithFacebook(){
+    this.loginProvider.loginWithFacebook();
+  }
+
+  logout(){
+    this.loginProvider.logout();
   }
 
   gotoToRegitrarse(){

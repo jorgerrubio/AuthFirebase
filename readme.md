@@ -4,17 +4,20 @@
 	npm install --save firebase
 	typings install file:node_modules/firebase/firebase.d.ts --save --global && typings install
 	
-editar archivo
+###editar archivo
 `node_modules/@ionic/app-scripts/config/rollup.config.js`
 
-añadir esta linea dentro de 
+###añadir esta linea dentro de 
   var rollupConfig = {
      useStrict: false,
      // etc...
      
-editar archivo
+###editar archivo
 `tsconfig.json`
-  "exclude": [
+  
+ ``` 
+ "exclude": [
     "node_modules",
     "typings"
-  ],
+ ],
+ ```
