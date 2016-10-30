@@ -1,0 +1,5 @@
+{
+  "globalDependencies": {
+    "firebase": "file:node_modules/firebase/firebase.d.ts"
+  }
+}

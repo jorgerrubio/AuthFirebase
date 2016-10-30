@@ -1,0 +1,17 @@
+page-registrarse {
+  .toggle-box {
+    position: relative;
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #337ab7;
+      display: inline-block;
+      font-size: 1.5em;
+      font-weight: 600;
+      position: absolute;
+      right: .75em;
+      top: 1.5em;
+      z-index: 9;
+    }
+  }
+}
