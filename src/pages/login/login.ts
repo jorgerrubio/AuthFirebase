@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {Registrarse} from "../registrarse/registrarse";
 import {LoginProvider} from "../../providers/login-provider";
 import {Credential} from "../../model/credential";
-import {HomePage} from '../home/home';
+import {TareasList} from "../tareas-list/tareas-list";
 
 
 @Component({
@@ -14,13 +14,15 @@ export class Login {
 
   credential: Credential;
 
-  constructor(public navCtrl: NavController, public loginProvider: LoginProvider) {
-    this.credential = new Credential;
-  }
+  constructor(public navCtrl: NavController, public loginProvider: LoginProvider) {}
 
   ionViewDidLoad() {
+    this.credential = new Credential;
+
     this.loginProvider.loginSuccessEventEmitter.subscribe(
-      user => this.navCtrl.setRoot(HomePage)
+      user => {
+        this.navCtrl.setRoot(TareasList);
+      }
     );
 
     this.loginProvider.loginErrorEventEmitter.subscribe(

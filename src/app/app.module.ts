@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import {LoginProvider} from "../providers/login-provider";
 import {Registrarse} from "../pages/registrarse/registrarse";
 import firebase from 'firebase';
+import {TareasList} from "../pages/tareas-list/tareas-list";
+import {TareasAdd} from "../pages/tareas-add/tareas-add";
+import {TareasListIten} from "../components/tareas-list-iten/tareas-list-iten";
+import {TareasProvider} from "../providers/tareas-provider";
+import {LovProvider} from "../providers/lov-provider";
 
 const firebaseConfig = {
   apiKey: "AIzaSyB5rM8cR47spqF9wdWPAYX9jdfLM_J3Cx4",
@@ -18,9 +22,11 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
     Login,
-    Registrarse
+    Registrarse,
+    TareasList,
+    TareasListIten,
+    TareasAdd
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -28,11 +34,13 @@ const firebaseConfig = {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     Login,
-    Registrarse
+    Registrarse,
+    TareasList,
+    TareasListIten,
+    TareasAdd
   ],
-  providers: [LoginProvider]
+  providers: [LoginProvider, TareasProvider, LovProvider]
 })
 export class AppModule {
   constructor(){

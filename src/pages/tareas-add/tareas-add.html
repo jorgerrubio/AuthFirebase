@@ -1,0 +1,56 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{tarea.titulo != undefined ? tarea.titulo : 'Mi Tarea'}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form action="">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Titulo
+            </ion-label>
+            <ion-input name="titulo" [(ngModel)]="tarea.titulo" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Descripcion
+            </ion-label>
+            <ion-input name="descripcion" [(ngModel)]="tarea.descripcion" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Estados
+            </ion-label>
+            <ion-select name="state" [(ngModel)]="tarea.state">
+              <ion-option *ngFor="let state of lovProvider.getTareaStates()" [value]="state">
+                {{state}}
+              </ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button full clear (click)="addTarea()">
+            Guardar tarea
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

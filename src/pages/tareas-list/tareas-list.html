@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Lista de tareas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-item-sliding *ngFor="let tarea of tareas">
+      <ion-item (click)="updateTarea(tarea)">
+        <tareas-list-iten [tarea]="tarea"></tareas-list-iten>
+      </ion-item>
+
+      <ion-item-options side="right">
+        <button ion-button clear icon-only (click)="deleteTarea(tarea)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+  <!--<ion-list [virtualScroll]="tareas">
+    <ion-item-sliding *virtualItem="let tarea">
+
+      <button ion-iten (click)="updateTarea(tarea)">
+        <tareas-list-iten [tarea]="tarea"></tareas-list-iten>
+      </button>
+
+      <ion-item-options>
+        <button ion-button clear icon-only (click)="deleteTarea(tarea)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>-->
+</ion-content>
+
+<ion-fab bottom right>
+  <button ion-fab color="primary" (click)="addTarea()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+</ion-fab>

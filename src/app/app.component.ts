@@ -3,13 +3,15 @@ import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { Login } from '../pages/login/login';
+import { TareasList } from '../pages/tareas-list/tareas-list';
 
 
 @Component({
   template: `<ion-nav [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = Login;
+  // rootPage = Login;
+  rootPage = (window.localStorage.getItem('isLogged') != null) ? TareasList : Login;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
@@ -17,6 +19,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       Splashscreen.hide();
+      
     });
   }
 }
