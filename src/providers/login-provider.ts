@@ -62,7 +62,7 @@ export class LoginProvider {
           console.log(resultado);
           firebase.database().ref('users/').child(resultado.uid).set(resultado.email)
         })
-        .catch(error => console.log(error));
+        .catch(error => this.callbackErrorLogin(error));
   }
 
   logout(){
@@ -78,6 +78,6 @@ export class LoginProvider {
   }
 
   private callbackErrorLogin(error) {
-    this.loginSuccessEventEmitter.emit({code: error.code, message: error.message, email: error.email, credential: error.password});
+    this.loginErrorEventEmitter.emit({code: error.code, message: error.message, email: error.email, credential: error.password});
   }
 }
